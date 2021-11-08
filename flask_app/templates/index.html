@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Index</title>
+</head>
+<body>
+    <div class="container justify-center">
+        <div class="main">
+            <h1>Dojo Survey</h1>
+            <form action="/process" method="post">
+                <div class="container">
+                    <label for="name">Name: </label>
+                    <input type="text" class="" name='name' placeholder="Your name here..." value="">
+                                        
+                </div>
+                <div class="container">
+                    <label for="location">Dojo Location: </label>
+                    <select name='location' id='location'>
+                        <option value='Bellevue'>Bellevue</option>
+                        <option value='Boise'>Boise</option>
+                        <option value='Chicago'>Chicago</option>
+                        <option value='Los Angeles'>Los Angeles</option>
+                        <option value='Silicon Valley'>Silicon Valley</option>
+                        <option value='Online'>Online</option>
+                    </select>
+                </div>
+                <div class="container" >
+                    <label for="language">Favorite Language: </label>
+                    <select name='language' id='language'>
+                        <option value='HTML and CSS'>HTML and CSS</option>
+                        <option value='Javascript'>Javascript</option>
+                        <option value='Python'>Python</option>
+                        <option value='MERN'>MERN</option>
+                        <option value='Java'>Java</option>
+                        <option value='C-based'>C-based</option>
+                    </select>
+                </div>
+                <div class="container">
+                    <label for='comments'>Comments: </label>
+                    <textarea name="comments" rows="4" cols="30" placeholder="Your comments here..."></textarea>
+                </div>
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                        {% if messages %}                            <!-- check if there are any messages -->
+                            {% for message in messages %}            <!-- loop through the messages -->
+                                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                <div class = "container justify-center">
+                    <button type="submit">Submit</button></div>
+            </form>
+        </div>
+
+    </div>
+    
+</body>
+</html>
